@@ -1,1 +1,0 @@
-# angular-test-portfolio
