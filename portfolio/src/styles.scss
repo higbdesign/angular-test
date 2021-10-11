@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+.u-gender-icon {
+  font-size: 42px;
+}
+
+.u-image {
+  display: block;
+  margin: 0 auto !important;
+  margin-bottom: 20px !important;
+}
+
+.u-icon {
+  margin-right: 5px;
+}
+
+.mat-tab-group {
+  .mat-tab-header {
+    margin-bottom: 20px;
+  }
+}
