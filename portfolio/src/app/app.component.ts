@@ -1,49 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { IContactInfo, IDateOfBirth, IId, ILocation, ILogin, IName, IPicture, IRegistered } from './typings/contact';
 
-export interface Location {
-  city: string;
-  coordinates: {
-    latitude: string;
-    longitude: string;
-  }
-  country: string;
-  postcode: number;
-  state: string;
-  street: {
-    name: string;
-    number: number;
-  }
-  timezone: {
-    description: string;
-    offset: string;
-  }
-}
-
-export interface Id {
-  name: string;
-  value: string;
-}
-
-export interface DateOfBirth {
-  date: string;
-  age: number;
-}
-
-export interface ContactInfo {
-  cell: string;
-  dob: DateOfBirth;
-  email: string;
-  gender: string;
-  id: Id;
-  location: Location;
-  login: {};
-  name: {};
-  nat: string;
-  phone: string;
-  picture: {};
-  registered: {};
-}
 
 @Component({
   selector: 'app-root',
@@ -51,20 +9,18 @@ export interface ContactInfo {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'portfolio';
-
   cell: string;
-  dob: DateOfBirth;
+  dob: IDateOfBirth;
   email: string;
   gender: string;
-  id: Id;
-  location: Location;
-  login: any;
-  name: any;
+  id: IId;
+  location: ILocation;
+  login: ILogin;
+  name: IName;
   nat: string;
   phone: string;
-  picture: any;
-  registered: any;
+  picture: IPicture;
+  registered: IRegistered;
 
   constructor(
     private http: HttpClient,
@@ -85,9 +41,8 @@ export class AppComponent implements OnInit, AfterViewInit {
         'https://randomuser.me/api'
       )
       .subscribe(({ info, results }: { info: object, results: object }) => {
-        console.log('menu items', results[0]);
 
-        const { cell, dob, email, gender, id, location, login, name, nat, phone, picture, registered }: ContactInfo = results[0];
+        const { cell, dob, email, gender, id, location, login, name, nat, phone, picture, registered }: IContactInfo = results[0];
 
         this.cell = cell;
         this.dob = dob;

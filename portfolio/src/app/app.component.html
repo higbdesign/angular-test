@@ -10,13 +10,14 @@
           <mat-card-subtitle>{{gender}} | <mat-icon class="u-icon" inline>cake</mat-icon> {{dob?.date | date:'dd MMMM YYYY' }} - {{dob?.age}} years old | <mat-icon class="u-icon" inline>explore</mat-icon>Nationality: {{nat}}</mat-card-subtitle>
         </mat-card-header>
           <img
+            *ngIf="picture?.thumbnail"
             class="u-image"
             mat-card-xl-image
             loading="lazy"
-            [srcset]=""
-            [sizes]=""
+            srcset="{{picture?.thumbnail + ' 454w'}}, {{picture?.medium + ' 599w'}}, {{picture?.large + ' 620w'}}"
+            sizes="(max-width: 500px) 454px, (max-width: 619px) 599px, 620px"
             [src]="picture?.large"
-            [alt]=""
+            alt="avatar image"
           >
         <mat-card-content>
           <mat-tab-group>
@@ -50,25 +51,12 @@
                 User data
               </ng-template>
               <p>{{id?.name}} {{id?.value}}</p>
-
-              <!-- <p>{{login?.md5}}</p>
-              <p>{{login?.password}}</p>
-              <p>{{login?.salt}}</p>
-              <p>{{login?.sha1}}</p>
-              <p>{{login?.sha256}}</p>
-              <p>{{login?.username}}</p>
-              <p>{{login?.uuid}}</p> -->
-
               <p>Registered since {{registered?.date | date:'dd MMMM YYYY' }}</p>
               <p>Registered for {{registered?.age}} years</p>
             </mat-tab>
 
           </mat-tab-group>
         </mat-card-content>
-        <!-- <mat-card-actions> -->
-          <!-- <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button> -->
-        <!-- </mat-card-actions> -->
       </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
